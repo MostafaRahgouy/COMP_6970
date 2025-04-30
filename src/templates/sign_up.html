@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X04QR1882"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AU Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='sign_up.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="top_section">
+    <img src="{{ url_for('static', filename='images/au_logo.png') }}" alt="Auburn Logo" class="au_logo">
+    <h1 class="top_title">AU Personal Fitness Center</h1>
+</div>
+
+
+<div class="content">
+    <div class="signup_box">
+        <h2>Create Your Account</h2>
+        <form class="signup_form" id="signupForm">
+            <!-- Common fields for both roles -->
+            <input type="text" placeholder="AU ID" id="auId" required>
+            <input type="text" placeholder="Full Name" id="fullName" required>
+            <input type="password" placeholder="Password" id="password" required>
+
+            <div class="role_selector">
+                <label>
+                    <input type="radio" name="role" value="trainer" id="trainerRole" required>
+                    <span>Trainer</span>
+                </label>
+                <label>
+                    <input type="radio" name="role" value="trainee" id="traineeRole">
+                    <span>Trainee</span>
+                </label>
+            </div>
+
+            <!-- Trainer-specific fields (hidden by default) -->
+            <div id="trainerFields" style="display: none;">
+                <select id="specialization" >
+                    <option value="" disabled selected>Select Specialization</option>
+                    <option value="Strength Training">Strength Training</option>
+                    <option value="Yoga & Flexibility">Yoga & Flexibility</option>
+                    <option value="Weight Loss">Weight Loss</option>
+                    <option value="CrossFit">CrossFit</option>
+                    <option value="Sports Performance">Sports Performance</option>
+                    <option value="Post-Rehab Training">Post-Rehab Training</option>
+                    <option value="Senior Fitness">Senior Fitness</option>
+                    <option value="Prenatal/Postnatal">Prenatal/Postnatal</option>
+                </select>
+
+                <select id="experience">
+                    <option value="" disabled selected>Select Experience</option>
+                    <option value="Less than 1 year">Less than 1 year</option>
+                    <option value="1-2 years">1-2 years</option>
+                    <option value="3-4 years">3-4 years</option>
+                    <option value="5+ years">5+ years</option>
+                </select>
+
+                <textarea placeholder="Brief Bio (max 200 characters)" id="bio" maxlength="200"></textarea>
+            </div>
+
+            <button type="submit" class="signup_btn">Sign Up</button>
+            <p class="signin_link">
+                Already have an account? <a href="/sign_in">Sign in here</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+
+
+<div id="blurOverlay" class="blur-overlay hidden"></div>
+
+<div id="customAlert" class="custom-alert hidden">
+    <p id="customAlertMessage"></p>
+    <button id="customAlertOkBtn">OK</button>
+</div>
+
+
+
+<script src="{{ url_for('static', filename='sign_up.js') }}"></script>
+
+</body>
+
+
+</html>
+

@@ -1,0 +1,267 @@
+:root {
+    --auburn_blue: #0C2340;
+    --auburn_orange: #cc4e0b;
+    --auburn_second_blue: #006c9a;
+    --auburn_second_orange: #E87722;
+    --background: #ffffff;
+    --black: #6E6E6E;
+    --gray: #e7e9ec;
+    --phone_red: #ff0000;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--gray);
+    font-family: sans-serif;
+}
+
+
+
+
+
+
+
+.top_section {
+    display: flex;
+    flex: 0 0 20%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(90deg, var(--auburn_blue), var(--auburn_second_orange));
+    color: white;
+    animation: slideDown 1s ease-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.au_logo {
+    height: 80px;
+    margin-right: 20px;
+    animation: fadeIn 2s ease-in;
+    border-radius: 10px;
+}
+
+.top_title {
+    font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    animation: slideInText 1.5s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInText {
+    from {
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: fadeIn 1.2s ease-in;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.signup_box {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    animation: slideUp 0.8s ease-out;
+}
+
+.signup_box h2 {
+    color: var(--auburn_blue);
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.signup_form input[type="text"],
+.signup_form input[type="password"] {
+    padding: 14px 16px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.signup_form input:focus {
+    outline: none;
+    border-color: var(--auburn_second_orange);
+    box-shadow: 0 0 6px rgba(232, 119, 34, 0.4);
+}
+
+.role_selector {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: var(--auburn_blue);
+    font-size: 1rem;
+}
+
+.role_selector label {
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.signup_btn {
+    background-color: var(--auburn_second_orange);
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.signup_btn:hover {
+    background-color: var(--auburn_orange);
+}
+
+.signin_link {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.signin_link a {
+    color: var(--auburn_orange);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.signin_link a:hover {
+    text-decoration: underline;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+#blurOverlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: none;
+}
+
+#blurOverlay.show {
+    display: block;
+}
+
+#customAlert {
+    position: fixed;
+    top: 50%; left: 50%;
+    width: 70%;
+    transform: translate(-50%, -50%);
+    background-color: var(--auburn_blue);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    z-index: 1001;
+    display: none;
+    text-align: center;
+    color: var(--background);
+    font-size: 18px;
+}
+
+#customAlert.show {
+    display: block;
+}
+
+#customAlert button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--auburn_orange);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 767px), screen and (max-width: 1024px) and (orientation: landscape) {
+    body {
+        font-size: 0.8em !important;
+    }
+
+}

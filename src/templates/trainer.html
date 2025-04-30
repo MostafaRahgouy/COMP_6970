@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X04QR1882"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AU trainer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='trainer.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+
+<body>
+
+<div class="top_section">
+    <img src="{{ url_for('static', filename='images/au_logo.png') }}" alt="Auburn Logo" class="au_logo">
+    <h1 class="top_title">AU Personal Fitness Center</h1>
+</div>
+
+
+<div class="content">
+
+    <div class="tab_bar">
+        <i class="fas fa-user tab_icon active" data-tab="personal" title="Personal Info"></i>
+        <i class="fas fa-ruler-combined tab_icon" data-tab="body" title="Body Measurement"></i>
+        <i class="fas fa-dumbbell tab_icon" data-tab="strength" title="Strength Improvement"></i>
+    </div>
+
+
+    <div class="tab_content" id="personal" style="display: block;">
+        <div class="personal-info-card">
+            <form id="profile-form" enctype="multipart/form-data">
+                <div class="image-and-info">
+                    <div class="image-container">
+                        <img id="profile-pic"
+                             src="{{ session.get('profile_image', url_for('static', filename='images/default_avatar.png')) }}"
+                             alt="Profile Image">
+                        <label class="upload-btn">
+                            Change Image
+                            <input type="file" id="image-upload" name="image" accept="image/*" hidden>
+                        </label>
+                    </div>
+
+                    <div class="info-fields">
+                        <p><strong>Username:</strong> {{ session['username'] }}</p>
+                        <p><strong>Role:</strong> Trainee</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h3>🔒 Change Password</h3>
+                <div class="password-fields">
+                    <input type="password" name="current_password" placeholder="Current Password" required>
+                    <input type="password" name="new_password" placeholder="New Password" required>
+                    <button type="submit" class="primary-btn">Update Password</button>
+                </div>
+
+                <button type="button" id="logout-btn" class="logout-btn">🚪 Sign Out</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="tab_content" id="body" style="display: none;">
+        <div class="body-container">
+
+            <div class="graph-controls">
+                <select id="metric-select">
+                    <option value="weight">Weight</option>
+                    <option value="fat">Body Fat</option>
+                </select>
+            </div>
+            <div class="graph-container">
+                <canvas id="progress-graph"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="tab_content" id="strength" style="display: none;">
+        <div class="strength-container">
+
+            <div class="exercise-selection">
+                <h3>Select Exercises to Track</h3>
+                <div class="exercise-checkboxes">
+                    <label><input type="checkbox" name="exercise" value="pushups" checked> Push-ups</label>
+                    <label><input type="checkbox" name="exercise" value="pullups"> Pull-ups</label>
+                    <label><input type="checkbox" name="exercise" value="runtime"> Run Time</label>
+                    <label><input type="checkbox" name="exercise" value="sleep"> Sleep</label>
+                    <label><input type="checkbox" name="exercise" value="plank"> Plank</label>
+                </div>
+            </div>
+
+
+            <div class="graph-controls">
+                <select id="exercise-select">
+                </select>
+            </div>
+
+            <div class="graph-container">
+                <canvas id="fitness-graph"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script src="{{ url_for('static', filename='trainer.js') }}"></script>
+
+</body>
+
+
+</html>
+
